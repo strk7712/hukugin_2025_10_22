@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 
 @Controller
 public class InvestmentTrustController {
@@ -18,8 +23,28 @@ public class InvestmentTrustController {
 
     @GetMapping("/investmentTrust")
     public String bankTransfer(Model model) {
+        List<String> bankName = new ArrayList<>();
+        bankName.add("海");
+        bankName.add("陸");
+        bankName.add("空");
+
+        List<String> bankType = new ArrayList<>();
+        bankType.add("普通");
+        bankType.add("定期");
+        bankType.add("当座");
+        bankType.add("貯蓄");
+        bankType.add("その他");
+
+        List<String> stockName = new ArrayList<>();
+        stockName.add("M&H 500");
+        stockName.add("G&P 200");
+        stockName.add("J&T 1000");
+
+
         model.addAttribute("investmentTrustApplication", new InvestmentTrustForm());
-        model.addAttribute("nameOptions", "山陰共同銀行");
+        model.addAttribute("nameOptions", bankName);
+        model.addAttribute("BankType_nameOptions", bankType);
+        model.addAttribute("Stock_nameOptions", stockName);
         return "investmentTrustMain";
     }
 
