@@ -12,17 +12,17 @@ public class InvestmentTrustForm {
     @NonNull
     private String bankName;
     @NonNull
+    private String branchName;
+    @NonNull
+    private String bankAccountType;
+    @NonNull
     private Integer bankAccountNum;
     @NonNull
-    private String branches;
+    private String name;
     @NonNull
-    private String customerName;
+    private String fundName;
     @NonNull
-    private String stockName;
-    @NonNull
-    private String bankType;
-    @NonNull
-    private Integer purchaseAmount;
+    private Integer money;
 
     public String getBankName() {
         return bankName;
@@ -30,6 +30,22 @@ public class InvestmentTrustForm {
 
     public void setBankName(String bankName) {
         this.bankName = bankName;
+    }
+
+    public String getBranchName() {
+        return branchName;
+    }
+
+    public void setBranchName(String branchName) {
+        this.branchName = branchName;
+    }
+
+    public String getBankAccountType() {
+        return bankAccountType;
+    }
+
+    public void setBankAccountType(String bankAccountType) {
+        this.bankAccountType = bankAccountType;
     }
 
     public Integer getBankAccountNum() {
@@ -40,43 +56,27 @@ public class InvestmentTrustForm {
         this.bankAccountNum = bankAccountNum;
     }
 
-    public String getBranches() {
-        return branches;
+    public String getName() {
+        return name;
     }
 
-    public void setBranches(String branches) {
-        this.branches = branches;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getCustomerName() {
-        return customerName;
+    public String getFundName() {
+        return fundName;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+    public void setFundName(String fundName) {
+        this.fundName = fundName;
     }
 
-    public String getStockName() {
-        return stockName;
+    public Integer getMoney() {
+        return money;
     }
 
-    public void setStockName(String stockName) {
-        stockName = stockName;
-    }
-
-    public String getBankType() {
-        return bankType;
-    }
-
-    public void setBankType(String bankType) {
-        this.bankType = bankType;
-    }
-
-    public Integer getPurchaseAmount() {
-        return purchaseAmount;
-    }
-
-    public void setPurchaseAmount(Integer purchaseAmount) {
-        this.purchaseAmount = purchaseAmount;
+    public void setMoney(Integer money) {
+        this.money = money;
     }
 }

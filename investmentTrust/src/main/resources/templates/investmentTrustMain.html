@@ -101,49 +101,49 @@
 <body>
 <div class="content">
     <h1>投資信託注文情報入力</h1>
-    <form action="#" th:action="@{/investmentTrustConfirmation}" th:object="${investmentTrustApplication}" method="post"
-          onsubmit="return validateForm();">
+    <form action="#" th:action="@{/investmentTrustConfirmation}" th:object="${investmentTrustApplication}"
+          method="post">
         <p><label class="ml-1">金融機関名 <small class="text-danger ml-1">※</small></label><br>
             <select th:field="*{bankName}" class="form-control">
-                <option th:each="option : ${nameOptions}"
+                <option th:each="option : ${bankName}"
                         th:value="${option}"
                         th:text="${option}">選択肢
                 </option>
             </select>
         </p>
         <p><label class="ml-1">支店名 <small class="text-danger ml-1">※</small></label><br>
-            <input type="text" th:field="*{bankName}" class="form-control" placeholder="支店名を入力"/></p>
-        <p><label class="ml-1">口座番号: <small class="text-danger ml-1">※</small></label><br>
-            <input type="number"
-                   id="AccountNum"
-                   th:field="*{bankAccountNum}"
-                   class="form-control"
-                   placeholder="1234567"
-                   autocomplete="off"/>
-        </p>
+            <input type="text" th:field="*{branchName}" class="form-control" placeholder="支店名を入力"/></p>
         <p><label class="ml-1">科目名 <small class="text-danger ml-1">※</small></label><br>
-            <select th:field="*{bankType}" class="form-control">
-                <option th:each="option : ${BankType_nameOptions}"
+            <select th:field="*{bankAccountType}" class="form-control">
+                <option th:each="option : ${bankAccountTypeOptions}"
                         th:value="${option}"
                         th:text="${option}">選択肢
                 </option>
             </select>
         </p>
+        <p><label class="ml-1">口座番号 <small class="text-danger ml-1">※</small></label><br>
+            <input type="number"
+                   th:field="*{bankAccountNum}"
+                   class="form-control"
+                   placeholder="1234567"
+                   autocomplete="off"/>
+        </p>
         <p><label class="ml-1">購入者氏名 <small class="text-danger ml-1">※</small></label><br>
-            <input type="text" th:field="*{customerName}" class="form-control" placeholder="氏名を入力してください"
+            <input type="text" th:field="*{name}" class="form-control" placeholder="氏名を入力してください"
                    autocomplete="off"/></p>
-        <p><label class="ml-1">銘柄選択: <small class="text-danger ml-1">※</small></label><br>
-            <select id="StockSelect" th:field="*{stockName}" class="form-control">
-                <option th:each="option : ${Stock_nameOptions}"
+        <p><label class="ml-1">銘柄選択 <small class="text-danger ml-1">※</small></label><br>
+            <select th:field="*{fundName}" class="form-control">
+                <option th:each="option : ${fundNameOptions}"
                         th:value="${option}"
                         th:text="${option}">選択肢
                 </option>
-            </select></p>
+            </select>
+        </p>
         <p><label class="ml-1">購入金額(円) <small class="text-danger ml-1">※</small></label><br>
-            <input type="number" th:field="*{purchaseAmount}" class="form-control"/></p>
+            <input type="number" th:field="*{money}" class="form-control"/></p>
         <p style="text-align: center;">
             <input type="submit" value="確認" class="form-control-button form-confirmation-button"/>
-            <input type="button" id="clearBtn" value="クリア" class="form-control-button form-clear-button"/></p>
+            <input type="button" value="クリア" class="form-control-button form-clear-button"/></p>
     </form>
 </div>
 </body>

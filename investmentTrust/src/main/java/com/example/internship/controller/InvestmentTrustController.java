@@ -28,32 +28,35 @@ public class InvestmentTrustController {
         bankName.add("陸");
         bankName.add("空");
 
-        List<String> bankType = new ArrayList<>();
-        bankType.add("普通");
-        bankType.add("定期");
-        bankType.add("当座");
-        bankType.add("貯蓄");
-        bankType.add("その他");
+        List<String> bankAccountType = new ArrayList<>();
+        bankAccountType.add("普通");
+        bankAccountType.add("定期");
+        bankAccountType.add("当座");
+        bankAccountType.add("貯蓄");
+        bankAccountType.add("その他");
 
-        List<String> stockName = new ArrayList<>();
-        stockName.add("M&H 500");
-        stockName.add("G&P 200");
-        stockName.add("J&T 1000");
-
+        List<String> fundName = new ArrayList<>();
+        fundName.add("M&H 500");
+        fundName.add("G&P 200");
+        fundName.add("J&T 1000");
 
         model.addAttribute("investmentTrustApplication", new InvestmentTrustForm());
-        model.addAttribute("nameOptions", bankName);
-        model.addAttribute("BankType_nameOptions", bankType);
-        model.addAttribute("Stock_nameOptions", stockName);
+        model.addAttribute("bankName", bankName);
+        model.addAttribute("bankAccountTypeOptions", bankAccountType);
+        model.addAttribute("fundNameOptions", fundName);
         return "investmentTrustMain";
     }
 
     @PostMapping("/investmentTrustConfirmation")
     public String confirmation(@ModelAttribute InvestmentTrustForm investmentTrustForm, Model model) {
-        investmentTrustForm.setBankName("ながれぼし銀行");
-        model.addAttribute("bankName", investmentTrustForm.getBankName());
-        model.addAttribute("bankAccountNum", investmentTrustForm.getBankAccountNum());
         model.addAttribute("investmentTrustApplication", investmentTrustForm);
+        model.addAttribute("bankName", investmentTrustForm.getBankName());
+        model.addAttribute("branchName", investmentTrustForm.getBranchName());
+        model.addAttribute("bankAccountType", investmentTrustForm.getBankAccountType());
+        model.addAttribute("bankAccountNum", investmentTrustForm.getBankAccountNum());
+        model.addAttribute("name", investmentTrustForm.getName());
+        model.addAttribute("fundName", investmentTrustForm.getFundName());
+        model.addAttribute("money", investmentTrustForm.getMoney());
         return "investmentTrustConfirmation";
     }
 
