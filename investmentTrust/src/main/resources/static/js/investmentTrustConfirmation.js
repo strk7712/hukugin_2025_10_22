@@ -1,4 +1,7 @@
-const submitButton = document.getElementById("submit")
-    submitButton.addEventListener('click', (e) => {
-      console.log(confirm("操作を実行します"))
-    })
+const form = document.getElementById("confirmationForm");
+    form.addEventListener("submit", function (e) {
+      const result = confirm("注文を確定してよろしいでしょうか？");
+      if (!result) {
+        e.preventDefault();
+      }
+    });
