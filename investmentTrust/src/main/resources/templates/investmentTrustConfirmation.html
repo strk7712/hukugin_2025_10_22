@@ -38,12 +38,18 @@
 </head>
 <body>
 <h1>投資信託注文確認画面</h1>
+<!--    申込ボタン(submitボタン)が押された場合の動きを定義-->
+<!--    postで/investmentTrustCompletionにアクセス、入力データはInvestmentTrustForm(Controllerの実装によりinvestmentTrustApplication＝InvestmentTrustForm)に入れる-->
+<!--    したがって申込ボタン(submitボタン)が押された場合にControllerの69行目の実装の部分に行く-->
 <form action="#" id="confirmationForm" th:action="@{/investmentTrustCompletion}" th:object="${investmentTrustApplication}" method="post">
 
     <div class="row">
+<!--        確認画面に表示する内容-->
         <div class="label">金融機関名</div>
         <div class="colon">:</div>
         <div class="value" th:text="*{bankName}"></div>
+<!--        申込ボタンが押された際にInvestmentTrustFormに入れて飛ばすデータを定義-->
+<!--        th:value="*{bankName}"と書くことでInvestmentTrustFormのbankNameにデータを入れる-->
         <input type="hidden" name="bankName" th:value="*{bankName}"/>
     </div>
 
@@ -91,13 +97,16 @@
 
     <p>
     <div class="row">
+    <!--            確認ボタン(submitボタン＝押された場合にform action...の部分で定義されている動きを行う)-->
         <div class="label"><input type="submit" id="submit" value="申込" style="background-color: #007BFF; color: white;"/></div>
+    <!--            キャンセルボタン(/investmentTrustにアクセス　Controllerの22行目へ飛ぶ)-->
         <div class="value"> <input type="button" value="キャンセル" onclick="window.location='/investmentTrust';"/>
         </div>
     </div>
     </p>
 
 </form>
+<!--resources/static.js/investmentTrustConfirmation.jsをこのHTML内で動かす-->
 <script th:inline="javascript" src="/js/investmentTrustConfirmation.js"></script>
 
 </body>
