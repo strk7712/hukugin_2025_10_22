@@ -10,10 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 
 @Controller
 public class InvestmentTrustController {
@@ -23,11 +20,13 @@ public class InvestmentTrustController {
 
     @GetMapping("/investmentTrust")
     public String bankTransfer(Model model) {
+        // 金融機関名のセレクトボックス内の選択肢を生成
         List<String> bankName = new ArrayList<>();
-        bankName.add("海");
-        bankName.add("陸");
-        bankName.add("空");
+        bankName.add("A銀行");
+        bankName.add("B銀行");
+        bankName.add("C銀行");
 
+        // 科目名のセレクトボックス内の選択肢を生成
         List<String> bankAccountType = new ArrayList<>();
         bankAccountType.add("普通");
         bankAccountType.add("定期");
@@ -35,21 +34,27 @@ public class InvestmentTrustController {
         bankAccountType.add("貯蓄");
         bankAccountType.add("その他");
 
+        // 銘柄選択のセレクトボックス内の選択肢を生成する
         List<String> fundName = new ArrayList<>();
-        fundName.add("M&H 500");
-        fundName.add("G&P 200");
-        fundName.add("J&T 1000");
+        fundName.add("銘柄1");
+        fundName.add("銘柄2");
+        fundName.add("銘柄3");
 
+        //investmentTrustMain.htmlのinvestmentTrustApplicationという文字列にInvestmentTrustFormが入る
         model.addAttribute("investmentTrustApplication", new InvestmentTrustForm());
+        //investmentTrustMain.htmlのbankNameという文字列に変数bankNameに入っているデータが入る
         model.addAttribute("bankName", bankName);
         model.addAttribute("bankAccountTypeOptions", bankAccountType);
         model.addAttribute("fundNameOptions", fundName);
+        // resources/templates/investmentTrustMain.htmlを画面へ描写
         return "investmentTrustMain";
     }
 
     @PostMapping("/investmentTrustConfirmation")
     public String confirmation(@ModelAttribute InvestmentTrustForm investmentTrustForm, Model model) {
+        //investmentTrustConfirmation.htmlのinvestmentTrustApplicationという文字列にInvestmentTrustFormが入る
         model.addAttribute("investmentTrustApplication", investmentTrustForm);
+        //investmentTrustMain.htmlのbankNameという文字列に変数investmentTrustFormに入っているbankNameのデータが入る
         model.addAttribute("bankName", investmentTrustForm.getBankName());
         model.addAttribute("branchName", investmentTrustForm.getBranchName());
         model.addAttribute("bankAccountType", investmentTrustForm.getBankAccountType());
@@ -61,8 +66,10 @@ public class InvestmentTrustController {
     }
 
     @PostMapping("/investmentTrustCompletion")
-    public String completion(@ModelAttribute InvestmentTrustForm investmentTrustForm, Model model) {
+    public String completion(@ModelAttribute InvestmentTrustForm investmentTrustForm) {
+        // ユーザーの入力内容をDBに入れる（service/OrderInvestmentTrustService.javaのorderInvestmentTrustメソッドへ）
         orderInvestmentTrustService.orderInvestmentTrust(investmentTrustForm);
+        // resources/templates/investmentTrustCompletion.htmlを画面へ描写
         return "investmentTrustCompletion";
     }
 

@@ -1,5 +1,7 @@
+// 投資信託注文確認画面で申込ボタン(submitボタン)が押された場合にダイアログを出す実装
 const form = document.getElementById("confirmationForm");
     form.addEventListener("submit", function (e) {
+    　// ダイアログのOKボタンが押された場合は続きへ、キャンセルの場合は続きへ行かないようにする実装
       const result = confirm("注文を確定してよろしいでしょうか？");
       if (!result) {
         e.preventDefault();

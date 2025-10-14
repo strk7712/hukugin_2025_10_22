@@ -24,10 +24,12 @@ public class InvestmentTrustForm {
     @NonNull
     private Integer money;
 
+    // InvestmentTrustFormにあるbankNameのデータを取り出す関数
     public String getBankName() {
         return bankName;
     }
 
+    // InvestmentTrustFormにあるbankNameにデータ入れる・上書きする関数
     public void setBankName(String bankName) {
         this.bankName = bankName;
     }
