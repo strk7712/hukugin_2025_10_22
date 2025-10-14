@@ -18,6 +18,7 @@ public class InvestmentTrustController {
     @Autowired
     private OrderInvestmentTrustService orderInvestmentTrustService;
 
+    // /investmentTrustにアクセスされたものは23行目から動くように設定
     @GetMapping("/investmentTrust")
     public String bankTransfer(Model model) {
         // 金融機関名のセレクトボックス内の選択肢を生成
@@ -50,6 +51,7 @@ public class InvestmentTrustController {
         return "investmentTrustMain";
     }
 
+    // postで/investmentTrustConfirmationに飛んできたものは56行目から動くように設定
     @PostMapping("/investmentTrustConfirmation")
     public String confirmation(@ModelAttribute InvestmentTrustForm investmentTrustForm, Model model) {
         //investmentTrustConfirmation.htmlのinvestmentTrustApplicationという文字列にInvestmentTrustFormが入る
@@ -65,6 +67,7 @@ public class InvestmentTrustController {
         return "investmentTrustConfirmation";
     }
 
+    // postで/investmentTrustCompletionに飛んできたものは72行目から動くように設定
     @PostMapping("/investmentTrustCompletion")
     public String completion(@ModelAttribute InvestmentTrustForm investmentTrustForm) {
         // ユーザーの入力内容をDBに入れる（service/OrderInvestmentTrustService.javaのorderInvestmentTrustメソッドへ）

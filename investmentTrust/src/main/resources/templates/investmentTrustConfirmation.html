@@ -40,7 +40,7 @@
 <h1>投資信託注文確認画面</h1>
 <!--    申込ボタン(submitボタン)が押された場合の動きを定義-->
 <!--    postで/investmentTrustCompletionにアクセス、入力データはInvestmentTrustForm(Controllerの実装によりinvestmentTrustApplication＝InvestmentTrustForm)に入れる-->
-<!--    したがって申込ボタン(submitボタン)が押された場合にControllerの69行目の実装の部分に行く-->
+<!--    したがって申込ボタン(submitボタン)が押された場合にControllerの72行目の実装の部分に行く-->
 <form action="#" id="confirmationForm" th:action="@{/investmentTrustCompletion}" th:object="${investmentTrustApplication}" method="post">
 
     <div class="row">
@@ -99,7 +99,7 @@
     <div class="row">
     <!--            確認ボタン(submitボタン＝押された場合にform action...の部分で定義されている動きを行う)-->
         <div class="label"><input type="submit" id="submit" value="申込" style="background-color: #007BFF; color: white;"/></div>
-    <!--            キャンセルボタン(/investmentTrustにアクセス　Controllerの22行目へ飛ぶ)-->
+    <!--            キャンセルボタン(/investmentTrustにアクセス　Controllerの23行目へ飛ぶ)-->
         <div class="value"> <input type="button" value="キャンセル" onclick="window.location='/investmentTrust';"/>
         </div>
     </div>
