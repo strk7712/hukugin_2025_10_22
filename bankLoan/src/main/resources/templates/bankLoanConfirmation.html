@@ -3,19 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <title>ローン申込確認画面</title>
+    <style>
+        body {
+          font-family: sans-serif;
+          padding: 20px;
+        }
+
+.row {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.label {
+  width: 140px;
+  text-align: right;
+  font-weight: bold;
+  padding-right: 2px;
+}
+
+.colon {
+  margin: 0 2px; /* 左右に同じ余白 */
+  font-weight: bold;
+}
+
+.value {
+  flex: 1;
+  padding-left: 2px; /* コロンの右側に余白を追加 */
+}
+    </style>
 </head>
 <body>
 <h1>ローン申込確認画面</h1>
-<form action="#" th:action="@{/bankLoanCompletion}" th:object="${bankLoanApplication}" method="post">
-    <p>金融機関名: <span th:text="*{bankName}"></span></p>
-    <p>口座番号: <span th:text="*{bankAccountNum}"></span></p>
-    <input type="hidden" name="bankAccountNum" th:value="*{bankAccountNum}"/>
-    <input type="hidden" name="bankName" th:value="*{bankName}"/>
+<form action="#" id="confirmationForm" th:action="@{/bankLoanCompletion}" th:object="${bankLoanApplication}" method="post">
+    <div class="row">
+        <!--        確認画面に表示する内容-->
+        <div class="label">金融機関名</div>
+        <div class="colon">:</div>
+        <div class="value" th:text="*{bankName}"></div>
+        <!--        申込ボタンが押された際にBankLoanFormに入れて飛ばすデータを定義-->
+        <!--        th:value="*{bankName}"と書くことでBankLoanのbankNameにデータを入れる-->
+        <input type="hidden" name="bankName" th:value="*{bankName}"/>
+    </div>
+
+    <div class="row">
+        <div class="label">支店名</div>
+        <div class="colon">:</div>
+        <div class="value" th:text="*{branchName}"></div>
+        <input type="hidden" name="branchName" th:value="*{branchName}"/>
+    </div>
+
+    <div class="row">
+        <div class="label">科目名</div>
+        <div class="colon">:</div>
+        <div class="value" th:text="*{bankAccountType}"></div>
+        <input type="hidden" name="bankAccountType" th:value="*{bankAccountType}"/>
+    </div>
+
+    <div class="row">
+        <div class="label">口座番号</div>
+        <div class="colon">:</div>
+        <div class="value" th:text="*{bankAccountNum}"></div>
+        <input type="hidden" name="bankAccountNum" th:value="*{bankAccountNum}"/>
+    </div>
+
+    <div class="row">
+        <div class="label">債務者名</div>
+        <div class="colon">:</div>
+        <div class="value" th:text="*{name}"></div>
+        <input type="hidden" name="name" th:value="*{name}"/>
+    </div>
+
+    <div class="row">
+        <div class="label">借入金額</div>
+        <div class="colon">:</div>
+        <div class="value" th:text="*{loanAmount}"></div>
+        <input type="hidden" name="loanAmount" th:value="*{loanAmount}"/>
+    </div>
+
+    <div class="row">
+        <div class="label">借入年収</div>
+        <div class="colon">:</div>
+        <div class="value" th:text="*{annualIncome}"></div>
+        <input type="hidden" name="annualIncome" th:value="*{annualIncome}"/>
+    </div>
+
+    <div class="row">
+        <div class="label">金利</div>
+        <div class="colon">:</div>
+        <div class="value" th:text="*{interestRate}"></div>
+        <input type="hidden" name="interestRate" th:value="*{interestRate}"/>
+    </div>
+
     <p>
-        <input type="submit" id="submit" value="申込"/>
-        <input type="button" value="キャンセル" onclick="window.location='/bankLoan';"/>
+    <div class="row">
+        <!--            確認ボタン(submitボタン＝押された場合にform action...の部分で定義されている動きを行う)-->
+        <div class="label">
+            <input type="submit" id="submit" value="振込" style="background-color: #007BFF; color: white;"/>
+        </div>
+        <!--            キャンセルボタン(/bankLoanにアクセス　Controllerの24行目へ飛ぶ)-->
+        <div class="value">
+            <input type="button" value="キャンセル" onclick="window.location='/bankLoan';"/>
+        </div>
+    </div>
     </p>
 </form>
+<!--resources/static.js/bankLoanConfirmation.jsをこのHTML内で動かす-->
 <script th:inline="javascript" src="/js/bankLoanConfirmation.js"></script>
 </body>
 </html>

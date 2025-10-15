@@ -29,7 +29,7 @@ public class InvestmentTrustForm {
         return bankName;
     }
 
-    // InvestmentTrustFormにあるbankNameにデータ入れる・上書きする関数
+    // InvestmentTrustFormにあるbankNameにデータを入れる・上書きする関数
     public void setBankName(String bankName) {
         this.bankName = bankName;
     }

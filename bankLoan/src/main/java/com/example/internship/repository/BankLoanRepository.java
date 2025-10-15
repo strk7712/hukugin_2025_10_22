@@ -11,8 +11,11 @@ public class BankLoanRepository {
     JdbcTemplate jdbcTemplate;
 
     public void create(BankLoanForm bankLoanForm) {
-        String sql = "INSERT INTO bankLoan_table(bankName, bankAccountNum) VALUES(?, ?)";
-        jdbcTemplate.update(sql, bankLoanForm.getBankName(), bankLoanForm.getBankAccountNum());
+        // ユーザーの入力内容をDBに入れるSQLを準備
+        String sql = "INSERT INTO bankLoan_table(bankName,branchName,bankAccountType,bankAccountNum,name,loanAmount,annualIncome,interestRate) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+        // ユーザーの入力内容をDBに入れるSQLを実施
+        // bankLoan_tableのbankNameのカラムにbankLoanForm.getBankName()が入る(15行目のsqlのbankNameと一番目の?とbankLoanForm.getBankName()が紐づく)、その他も同様
+        jdbcTemplate.update(sql, bankLoanForm.getBankName(), bankLoanForm.getBranchName(), bankLoanForm.getBankAccountType(),bankLoanForm.getBankAccountNum(),bankLoanForm.getName(),bankLoanForm.getLoanAmount(),bankLoanForm.getAnnualIncome(),bankLoanForm.getInterestRate());
     }
 
 }

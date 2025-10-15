@@ -61,7 +61,7 @@ public class BankTransferController {
         return "bankTransferConfirmation";
     }
 
-    // postで/investmentTrustCompletionに飛んできたものは65行目から動くように設定
+    // postで/bankTransferCompletionに飛んできたものは65行目から動くように設定
     @PostMapping("/bankTransferCompletion")
     public String completion(@ModelAttribute BankTransferForm bankTransferForm) {
         // ユーザーの入力内容をDBに入れる（service/ApplyBankTransferService.javaのapplyBankTransferメソッドへ）

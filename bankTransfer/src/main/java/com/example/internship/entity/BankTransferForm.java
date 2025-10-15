@@ -26,12 +26,12 @@ public class BankTransferForm {
     @NonNull
     private LocalDate transferDate;
 
-    // InvestmentTrustFormにあるbankNameのデータを取り出す関数
+    // bankTransferFormにあるbankNameのデータを取り出す関数
     public String getBankName() {
         return bankName;
     }
 
-    // InvestmentTrustFormにあるbankNameにデータ入れる・上書きする関数
+    // bankTransferFormにあるbankNameにデータを入れる・上書きする関数
     public void setBankName(String bankName) {
         this.bankName = bankName;
     }

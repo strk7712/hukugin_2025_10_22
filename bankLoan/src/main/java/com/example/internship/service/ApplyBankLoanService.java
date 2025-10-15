@@ -13,6 +13,7 @@ public class ApplyBankLoanService {
     private BankLoanRepository bankLoanRepository;
 
     public void applyBankLoan(BankLoanForm bankLoanForm) {
+        // ユーザーの入力内容をDBに入れる（repository/BankLoanRepository.javaのcreateメソッドへ）
         bankLoanRepository.create(bankLoanForm);
     }
 }

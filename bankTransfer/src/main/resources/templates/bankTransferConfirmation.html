@@ -92,14 +92,14 @@
     <div class="label">
     <input type="submit" id="submit" value="振込" style="background-color: #007BFF; color: white;"/>
     </div>
-    <!--            キャンセルボタン(/investmentTrustにアクセス　Controllerの24行目へ飛ぶ)-->
+    <!--            キャンセルボタン(/bankTransferにアクセス　Controllerの24行目へ飛ぶ)-->
     <div class="value">
         <input type="button" value="キャンセル" onclick="window.location='/bankTransfer';"/>
     </div>
     </div>
     </p>
 </form>
-<!--resources/static.js/investmentTrustConfirmation.jsをこのHTML内で動かす-->
+<!--resources/static.js/bankTransferConfirmation.jsをこのHTML内で動かす-->
 <script th:inline="javascript" src="/js/bankTransferConfirmation.js"></script>
 </body>
 </html>

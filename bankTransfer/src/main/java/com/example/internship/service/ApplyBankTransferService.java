@@ -13,6 +13,7 @@ public class ApplyBankTransferService {
     private BankTransferRepository bankTransferRepository;
 
     public void applyBankTransfer(BankTransferForm bankTransferForm) {
+        // ユーザーの入力内容をDBに入れる（repository/BankTransferRepository.javaのcreateメソッドへ）
         bankTransferRepository.create(bankTransferForm);
     }
 }

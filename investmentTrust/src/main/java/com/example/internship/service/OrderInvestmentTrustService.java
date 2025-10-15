@@ -13,7 +13,7 @@ public class OrderInvestmentTrustService {
     private InvestmentTrustRepository investmentTrustRepository;
 
     public void orderInvestmentTrust(InvestmentTrustForm investmentTrustForm) {
-        // ユーザーの入力内容をDBに入れる（repository/investmentTrustRepository.javaのcreateメソッドへ）
+        // ユーザーの入力内容をDBに入れる（repository/InvestmentTrustRepository.javaのcreateメソッドへ）
         investmentTrustRepository.create(investmentTrustForm);
     }
 }
