@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
+import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -12,21 +14,73 @@ public class BankTransferForm {
     @NonNull
     private String bankName;
     @NonNull
+    private String branchName;
+    @NonNull
+    private String bankAccountType;
+    @NonNull
     private Integer bankAccountNum;
+    @NonNull
+    private String name;
+    @NonNull
+    private Integer money;
+    @NonNull
+    private LocalDate transferDate;
 
+    // InvestmentTrustFormにあるbankNameのデータを取り出す関数
     public String getBankName() {
         return bankName;
     }
 
+    // InvestmentTrustFormにあるbankNameにデータ入れる・上書きする関数
     public void setBankName(String bankName) {
         this.bankName = bankName;
+    }
+
+    public String getBranchName() {
+        return branchName;
+    }
+
+    public void setBranchName(String branchName) {
+        this.branchName = branchName;
+    }
+
+    public String getBankAccountType() {
+        return bankAccountType;
+    }
+
+    public void setBankAccountType(String bankAccountType) {
+        this.bankAccountType = bankAccountType;
     }
 
     public Integer getBankAccountNum() {
         return bankAccountNum;
     }
 
-    public void setBankAccountNum(Integer bankAccountNum) {
+    public void setBankAccountNum(@NonNull Integer bankAccountNum) {
         this.bankAccountNum = bankAccountNum;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(@NonNull String name) {
+        this.name = name;
+    }
+
+    public Integer getMoney() {
+        return money;
+    }
+
+    public void setMoney(@NonNull Integer money) {
+        this.money = money;
+    }
+
+    public LocalDate getTransferDate() {
+        return transferDate;
+    }
+
+    public void setTransferDate(@NonNull LocalDate transferDate) {
+        this.transferDate = transferDate;
     }
 }

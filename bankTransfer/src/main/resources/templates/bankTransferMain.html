@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <title>銀行振込情報入力画面</title>
+    <!--styleタブ内でデザインを定義-->
     <style>
         body {
         background-color: #f0f0f0;
@@ -62,16 +63,48 @@
 <body>
 <div class="content">
     <h1>銀行振込情報入力</h1>
+    <!--    確認ボタン(submitボタン)が押された場合の動きを定義-->
+    <!--    postで/bankTransferConfirmationにアクセス、入力データはBankTransferForm(Controllerの実装によりbankTransferApplication＝BankTransferForm)に入れる-->
+    <!--    したがって確認ボタン(submitボタン)が押された場合にControllerの49行目の実装の部分に行く-->
     <form action="#" th:action="@{/bankTransferConfirmation}" th:object="${bankTransferApplication}" method="post">
-        <p><label class="ml-1">金融機関名: <small class="text-danger ml-1">※</small></label><br>
+        <!--        金融機関名のセレクトボックスの実装部分-->
+        <!--        選択肢はbankNameに入るデータ(Controllerの実装によりbankName＝変数bankNameの中のデータが入る)-->
+        <!--        th:field="*{bankName}"と書くことでInvestmentTrustFormのどこに入力内容が入るか紐づいている-->
+        <p><label class="ml-1">金融機関名 <small class="text-danger ml-1">※</small></label><br>
             <select th:field="*{bankName}" class="form-control">
-                <option th:each="option : ${nameOptions}"
+                <option th:each="option : ${bankName}"
                         th:value="${option}"
                         th:text="${option}">選択肢
                 </option>
-            </select></p>
-        <p><label class="ml-1">口座番号: <small class="text-danger ml-1">※</small></label><br>
-            <input type="number" th:field="*{bankAccountNum}" class="form-control" placeholder="1234567"/></p>
+            </select>
+        </p>
+        <!--        支店名のテキストボックスの実装部分-->
+        <!--        <p>内は表示する文字を定義-->
+        <!--        テキストボックスの場合はinputタグをつけた部分でInvestmentTrustFormのどこに入力内容が入るか紐づける-->
+        <p><label class="ml-1">支店名 <small class="text-danger ml-1">※</small></label><br>
+            <input type="text" th:field="*{branchName}" class="form-control" placeholder="支店名を入力"/></p>
+        <p><label class="ml-1">科目名 <small class="text-danger ml-1">※</small></label><br>
+            <select th:field="*{bankAccountType}" class="form-control">
+                <option th:each="option : ${bankAccountTypeOptions}"
+                        th:value="${option}"
+                        th:text="${option}">選択肢
+                </option>
+            </select>
+        </p>
+        <p><label class="ml-1">口座番号 <small class="text-danger ml-1">※</small></label><br>
+            <input type="number"
+                   th:field="*{bankAccountNum}"
+                   class="form-control"
+                   placeholder="1234567"
+                   autocomplete="off"/>
+        </p>
+        <p><label class="ml-1">購入者氏名 <small class="text-danger ml-1">※</small></label><br>
+            <input type="text" th:field="*{name}" class="form-control" placeholder="氏名を入力してください"
+                   autocomplete="off"/></p>
+        <p><label class="ml-1">振り込み金額(円) <small class="text-danger ml-1">※</small></label><br>
+            <input type="number" th:field="*{money}" class="form-control"/></p>
+        <p><label class="ml-1">振り込み指定日: <small class="text-danger ml-1">※</small></label><br>
+            <input type="date" th:field="*{transferDate}" class="form-control"/></p>
         <p style="text-align: center;"><input type="submit" value="確認"
                                               class="form-control-button form-confirmation-button"/>
             <input type="reset" value="クリア" class="form-control-button form-clear-button"/></p>

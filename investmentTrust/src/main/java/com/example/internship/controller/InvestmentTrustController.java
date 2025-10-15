@@ -72,7 +72,6 @@ public class InvestmentTrustController {
     public String completion(@ModelAttribute InvestmentTrustForm investmentTrustForm) {
         // ユーザーの入力内容をDBに入れる（service/OrderInvestmentTrustService.javaのorderInvestmentTrustメソッドへ）
         orderInvestmentTrustService.orderInvestmentTrust(investmentTrustForm);
-        // resources/templates/investmentTrustCompletion.htmlを画面へ描写
         return "investmentTrustCompletion";
     }
 
