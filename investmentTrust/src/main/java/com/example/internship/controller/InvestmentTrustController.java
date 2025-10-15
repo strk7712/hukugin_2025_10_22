@@ -43,7 +43,7 @@ public class InvestmentTrustController {
 
         //investmentTrustMain.htmlのinvestmentTrustApplicationという文字列にInvestmentTrustFormが入る
         model.addAttribute("investmentTrustApplication", new InvestmentTrustForm());
-        //investmentTrustMain.htmlのbankNameという文字列に変数bankNameに入っているデータが入る
+        //investmentTrustMain.htmlのbankNameという文字列に変数bankNameに入っているデータが入る(以下同様)
         model.addAttribute("bankName", bankName);
         model.addAttribute("bankAccountTypeOptions", bankAccountType);
         model.addAttribute("fundNameOptions", fundName);
@@ -56,7 +56,7 @@ public class InvestmentTrustController {
     public String confirmation(@ModelAttribute InvestmentTrustForm investmentTrustForm, Model model) {
         //investmentTrustConfirmation.htmlのinvestmentTrustApplicationという文字列にInvestmentTrustFormが入る
         model.addAttribute("investmentTrustApplication", investmentTrustForm);
-        //investmentTrustMain.htmlのbankNameという文字列に変数investmentTrustFormに入っているbankNameのデータが入る
+        //investmentTrustMain.htmlのbankNameという文字列に変数investmentTrustFormに入っているbankNameのデータが入る(以下同様)
         model.addAttribute("bankName", investmentTrustForm.getBankName());
         model.addAttribute("branchName", investmentTrustForm.getBranchName());
         model.addAttribute("bankAccountType", investmentTrustForm.getBankAccountType());

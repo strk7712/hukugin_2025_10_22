@@ -38,7 +38,7 @@ public class BankTransferController {
 
         //bankTransferMain.htmlのbankTransferApplicationという文字列にBankTransferFormが入る
         model.addAttribute("bankTransferApplication", new BankTransferForm());
-        //bankTransferMain.htmlのbankNameという文字列に変数bankNameに入っているデータが入る
+        //bankTransferMain.htmlのbankNameという文字列に変数bankNameに入っているデータが入る(以下同様)
         model.addAttribute("bankName", bankName);
         model.addAttribute("bankAccountTypeOptions", bankAccountType);
         // resources/templates/bankTransferMain.htmlを画面へ描写
@@ -50,7 +50,7 @@ public class BankTransferController {
     public String confirmation(@ModelAttribute BankTransferForm bankTransferForm, Model model) {
         //bankTransferConfirmation.htmlのbankTransferApplicationという文字列にbankTransferFormが入る
         model.addAttribute("bankTransferApplication", bankTransferForm);
-        //bankTransferConfirmation.htmlのbankNameという文字列に変数bankTransferFormに入っているbankNameのデータが入る
+        //bankTransferConfirmation.htmlのbankNameという文字列に変数bankTransferFormに入っているbankNameのデータが入る(以下同様)
         model.addAttribute("bankName", bankTransferForm.getBankName());
         model.addAttribute("branchName", bankTransferForm.getBranchName());
         model.addAttribute("bankAccountType", bankTransferForm.getBankAccountType());

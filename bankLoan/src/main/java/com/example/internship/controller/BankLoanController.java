@@ -38,7 +38,7 @@ public class BankLoanController {
 
         //bankLoanMain.htmlのbankLoanApplicationという文字列にBankLoanFormが入る
         model.addAttribute("bankLoanApplication", new BankLoanForm());
-        //bankLoanMain.htmlのbankNameという文字列に変数bankNameに入っているデータが入る
+        //bankLoanMain.htmlのbankNameという文字列に変数bankNameに入っているデータが入る(以下同様)
         model.addAttribute("bankName", bankName);
         model.addAttribute("bankAccountTypeOptions", bankAccountType);
         // resources/templates/bankLoanMain.htmlを画面へ描写
@@ -50,7 +50,7 @@ public class BankLoanController {
     public String confirmation(@ModelAttribute BankLoanForm bankLoanForm, Model model) {
         //bankLoanConfirmation.htmlのbankLoanApplicationという文字列にbankLoanFormが入る
         model.addAttribute("bankLoanApplication", bankLoanForm);
-        //bankLoanConfirmation.htmlのbankNameという文字列に変数bankLoanFormに入っているbankNameのデータが入る
+        //bankLoanConfirmation.htmlのbankNameという文字列に変数bankLoanFormに入っているbankNameのデータが入る(以下同様)
         model.addAttribute("bankName", bankLoanForm.getBankName());
         model.addAttribute("branchName", bankLoanForm.getBranchName());
         model.addAttribute("bankAccountType", bankLoanForm.getBankAccountType());
