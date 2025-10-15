@@ -62,7 +62,7 @@ public class BankLoanController {
         return "bankLoanConfirmation";
     }
 
-    // postで/bankLoanCompletionに飛んできたものは65行目から動くように設定
+    // postで/bankLoanCompletionに飛んできたものは67行目から動くように設定
     @PostMapping("/bankLoanCompletion")
     public String completion(@ModelAttribute BankLoanForm bankLoanForm) {
         // ユーザーの入力内容をDBに入れる（service/ApplyBankLoanService.javaのapplyBankLoanServiceメソッドへ

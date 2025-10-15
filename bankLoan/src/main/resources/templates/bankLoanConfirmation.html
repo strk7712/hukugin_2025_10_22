@@ -34,6 +34,9 @@
 </head>
 <body>
 <h1>ローン申込確認画面</h1>
+<!--    申込ボタン(submitボタン)が押された場合の動きを定義-->
+<!--    postで/bankLoanCompletion、入力データはBankLoanForm(Controllerの実装によりbankLoanApplication＝BankLoanForm)に入れる-->
+<!--    したがって申込ボタン(submitボタン)が押された場合にControllerの66行目の実装の部分に行く-->
 <form action="#" id="confirmationForm" th:action="@{/bankLoanCompletion}" th:object="${bankLoanApplication}" method="post">
     <div class="row">
         <!--        確認画面に表示する内容-->

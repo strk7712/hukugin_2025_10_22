@@ -65,7 +65,7 @@
     <h1>ローン申込情報入力</h1>
     <!--    確認ボタン(submitボタン)が押された場合の動きを定義-->
     <!--    postで/bankLoanConfirmationにアクセス、入力データはBankLoanForm(Controllerの実装によりbankLoanApplication＝BankLoanForm)に入れる-->
-    <!--    したがって確認ボタン(submitボタン)が押された場合にControllerの49行目の実装の部分に行く-->
+    <!--    したがって確認ボタン(submitボタン)が押された場合にControllerの50行目の実装の部分に行く-->
     <form action="#" th:action="@{/bankLoanConfirmation}" th:object="${bankLoanApplication}" method="post">
         <!--        金融機関名のセレクトボックスの実装部分-->
         <!--        選択肢はbankNameに入るデータ(Controllerの実装によりbankName＝変数bankNameの中のデータが入る)-->
