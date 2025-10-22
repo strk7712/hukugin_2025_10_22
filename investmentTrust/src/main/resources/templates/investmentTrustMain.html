@@ -3,161 +3,257 @@
 <head>
     <meta charset="UTF-8"/>
     <title>投資信託注文情報入力画面</title>
-    <!--styleタブ内でデザインを定義-->
+
+    <!-- Select2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Select2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
     <style>
-        body {
-        background-color: #f0f0f0;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        padding-top: 40px;
-        padding-bottom: 40px;
-        justify-content: center;
-        align-items: center;
-        min-height: 85vh;
-        overflow: auto;
-        }
-        .content {
-         background-color: #ffffff;
-         width: 80%;
-         padding: 20px;
-         border-radius: 10px;
-         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-         min-height: 50vh;
-         overflow: auto;
-        }
-        .form-control {
-            width: 100%;
-            padding: 8px;
-            margin: 5px 0;
-            box-sizing: border-box;
-        }
-        .text-danger {
-        color: red;
-        }
-        .form-control-button {
-        width: 80px;
-        padding: 10px 20px;
-        margin-top: 10px;
-        border: none;
-        cursor: pointer;
-        border-radius: 5px;
-        }
-        .form-confirmation-button{
-        color: white;
-        background-color: #2185D0;
-        }
-        .form-confirmation-button:hover {
-        background-color: #1678c2;
-        }
-        .form-clear-button{
-        color: black;
-        background-color: #E0E1E2;
-        }
-        .form-clear-button:hover {
-        background-color: #CCCCCC;
-        }
-
-        .Number-action-button {
-        white-space: nowrap;
-        width: auto;
-        padding: 2px 5px;
-        font-size: 16px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        }
-
-        .placeholder {
-        color: green;
-        }
-
-
-  .suggest-box {
+        /* ベース全体 */
+body {
+    background: linear-gradient(to right, #f0f4f8, #e8eff5);
+    margin: 0;
+    font-family: 'Helvetica Neue', 'Segoe UI', Meiryo, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+    min-height: 100vh;
+}
+#siten {
+    width: 100%;
+    padding: 12px 14px;
     border: 1px solid #ccc;
-    background-color: #fff;
-    position: absolute;
-    width: 300px;
-    max-height: 200px;
-    overflow-y: auto;
-    z-index: 1000;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  }
-  .suggest-item {
-    padding: 8px;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #fdfdfd;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* フォームの囲い */
+.content {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 720px;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.3s ease;
+}
+
+.content:hover {
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
+}
+
+/* タイトル */
+h1 {
+    font-size: 26px;
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 40px;
+}
+
+/* ラベル */
+label {
+    font-weight: 600;
+    color: #34495e;
+    display: block;
+    margin-bottom: 6px;
+}
+
+/* 必須マーク */
+.text-danger {
+    color: #e74c3c;
+    font-size: 0.85em;
+    margin-left: 4px;
+}
+
+/* 入力欄共通 */
+.form-control {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 16px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    background-color: #fdfdfd;
+}
+
+.form-control:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 4px rgba(52, 152, 219, 0.4);
+    outline: none;
+}
+
+/* ボタン共通 */
+.form-control-button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
-    border-bottom: 1px solid #eee;
-  }
-  .suggest-item:last-child {
-    border-bottom: none;
-  }
-  .suggest-item:hover {
-    background-color: #f0f0f0;
-  }
+    font-size: 16px;
+    margin: 10px 8px 0;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+/* 確認ボタン */
+.form-confirmation-button {
+    background-color: #2980b9;
+    color: white;
+}
+
+.form-confirmation-button:hover {
+    background-color: #2471a3;
+    transform: translateY(-1px);
+}
+
+/* クリアボタン */
+.form-clear-button {
+    background-color: #bdc3c7;
+    color: #2c3e50;
+}
+
+.form-clear-button:hover {
+    background-color: #95a5a6;
+    transform: translateY(-1px);
+}
+
+/* Select2 カスタマイズ（銘柄） */
+.select2-container .select2-selection--single {
+    height: 44px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #fdfdfd;
+    font-size: 16px;
+}
+
+.select2-container--default .select2-selection--single:focus,
+.select2-container--default .select2-selection--single:hover {
+    border-color: #3498db;
+}
+
+/* セクション間 */
+p {
+    margin-bottom: 24px;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 600px) {
+    .content {
+        padding: 30px 20px;
+    }
+
+    .form-control-button {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
 
     </style>
+
+    <script>
+        // 英字・日本語のみ許可する（数字・記号は禁止）
+        function allowOnlyLetters(event) {
+            const char = String.fromCharCode(event.which);
+            if (!/^[a-zA-Zぁ-んァ-ン一-龥ー\s　]+$/.test(char)) {
+                event.preventDefault();
+            }
+        }
+
+        // Select2 初期化（銘柄検索対応）
+        $(document).ready(function() {
+            $('#fundNameSelect').select2({
+                width: '100%',
+                placeholder: "銘柄を検索または選択",
+                allowClear: true
+            });
+        });
+    </script>
 </head>
 <body>
+
 <div class="content">
-    <h1>投資信託注文情報入力</h1>
-<!--    確認ボタン(submitボタン)が押された場合の動きを定義-->
-<!--    postで/investmentTrustConfirmationにアクセス、入力データはInvestmentTrustForm(Controllerの実装によりinvestmentTrustApplication＝InvestmentTrustForm)に入れる-->
-<!--    したがって確認ボタン(submitボタン)が押された場合にControllerの56行目の実装の部分に行く-->
+    <h1>投資信託注文画面</h1>
     <form action="#" th:action="@{/investmentTrustConfirmation}" th:object="${investmentTrustApplication}"
           method="post">
-<!--        金融機関名のセレクトボックスの実装部分-->
-<!--        選択肢はbankNameに入るデータ(Controllerの実装によりbankName＝変数bankNameの中のデータが入る)-->
-<!--        th:field="*{bankName}"と書くことでInvestmentTrustFormのどこに入力内容が入るか紐づいている-->
+
         <p><label class="ml-1">金融機関名 <small class="text-danger ml-1">※</small></label><br>
-            <select th:field="*{bankName}" class="form-control">
+            <select id="bankname" th:field="*{bankName}" class="form-control" required>
                 <option th:each="option : ${bankName}"
                         th:value="${option}"
-                        th:text="${option}">選択肢
-                </option>
+                        th:text="${option}">選択肢</option>
             </select>
         </p>
-<!--        支店名のテキストボックスの実装部分-->
-<!--        <p>内は表示する文字を定義-->
-<!--        テキストボックスの場合はinputタグをつけた部分でInvestmentTrustFormのどこに入力内容が入るか紐づける-->
+
         <p><label class="ml-1">支店名 <small class="text-danger ml-1">※</small></label><br>
-            <input type="text" th:field="*{branchName}" class="form-control" placeholder="支店名を入力"/></p>
+            <!--            <input type="text"-->
+            <!--                   th:field="*{branchName}"-->
+            <!--                   class="form-control"-->
+            <!--                   placeholder="支店名を入力"-->
+            <!--                   required-->
+            <!--                   onkeypress="allowOnlyLetters(event)" />-->
+            <select id="siten" class="form-control">
+                <option value="">選択してください</option>
+            </select>
+        </p>
+
         <p><label class="ml-1">科目名 <small class="text-danger ml-1">※</small></label><br>
             <select th:field="*{bankAccountType}" class="form-control">
                 <option th:each="option : ${bankAccountTypeOptions}"
                         th:value="${option}"
-                        th:text="${option}">選択肢
-                </option>
+                        th:text="${option}">選択肢</option>
             </select>
         </p>
+
         <p><label class="ml-1">口座番号 <small class="text-danger ml-1">※</small></label><br>
             <input type="number"
                    th:field="*{bankAccountNum}"
                    class="form-control"
                    placeholder="1234567"
-                   autocomplete="off"/>
+                   autocomplete="off"
+                   required />
         </p>
+
         <p><label class="ml-1">購入者氏名 <small class="text-danger ml-1">※</small></label><br>
-            <input type="text" th:field="*{name}" class="form-control" placeholder="氏名を入力してください"
-                   autocomplete="off"/></p>
+            <input type="text"
+                   th:field="*{name}"
+                   class="form-control"
+                   placeholder="氏名を入力してください"
+                   autocomplete="off"
+                   required
+                   onkeypress="allowOnlyLetters(event)" />
+        </p>
+
         <p><label class="ml-1">銘柄選択 <small class="text-danger ml-1">※</small></label><br>
-            <select th:field="*{fundName}" class="form-control">
+            <select th:field="*{fundName}" class="form-control" id="fundNameSelect">
                 <option th:each="option : ${fundNameOptions}"
                         th:value="${option}"
-                        th:text="${option}">選択肢
-                </option>
+                        th:text="${option}">選択肢</option>
             </select>
         </p>
+
         <p><label class="ml-1">購入金額(円) <small class="text-danger ml-1">※</small></label><br>
-            <input type="number" th:field="*{money}" class="form-control"/></p>
+            <input type="number"
+                   min="100"
+                   max="2147483647"
+                   th:field="*{money}"
+                   class="form-control"
+                   required />
+        </p>
+
         <p style="text-align: center;">
-<!--            確認ボタン(submitボタン＝押された場合にform action...の部分で定義されている動きを行う)-->
-            <input type="submit" value="確認" class="form-control-button form-confirmation-button"/>
-<!--            キャンセルボタン（入力内容を初期化）-->
-            <input type="button" value="クリア" class="form-control-button form-clear-button"/></p>
+            <input type="submit" value="確認" class="form-control-button form-confirmation-button" />
+            <input type="reset" value="クリア" class="form-control-button form-clear-button" />
+        </p>
     </form>
 </div>
+<script th:inline="javascript" src="../js/investmentTrustConfirmation.js"></script>
 </body>
-
 </html>

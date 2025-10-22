@@ -3,11 +3,65 @@
 <head>
     <meta charset="UTF-8"/>
     <title>注文完了画面</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #f0f4f8, #e8eff5);
+            margin: 0;
+            font-family: 'Helvetica Neue', 'Segoe UI', Meiryo, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .content {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 600px;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 26px;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            padding: 12px 24px;
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+
+        .button:hover {
+            background-color: #2471a3;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 600px) {
+            .content {
+                padding: 30px 20px;
+            }
+
+            .button {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-<h1>注文完了</h1>
-<!--戻るボタン(/investmentTrustにアクセス　Controllerの23行目へ飛ぶ)-->
-<p><input type="button" value="注文に戻る" onclick="window.location='/investmentTrust';"/></p>
+<div class="content">
+    <h1>注文が完了しました</h1>
+    <input type="button" value="注文に戻る" onclick="window.location='/investmentTrust';" class="button"/>
+</div>
 </body>
-
 </html>

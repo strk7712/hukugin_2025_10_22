@@ -5,108 +5,183 @@
     <title>投資信託注文確認画面</title>
     <style>
         body {
-          font-family: sans-serif;
-          padding: 20px;
+            background: linear-gradient(to right, #f0f4f8, #e8eff5);
+            margin: 0;
+            font-family: 'Helvetica Neue', 'Segoe UI', Meiryo, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 40px 20px;
+            min-height: 100vh;
         }
 
-.row {
-  display: flex;
-  margin-bottom: 8px;
-}
+        .content {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 720px;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
 
-.label {
-  width: 140px;
-  text-align: right;
-  font-weight: bold;
-  padding-right: 2px;
-}
+        h1 {
+            font-size: 26px;
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 40px;
+        }
 
-.colon {
-  margin: 0 2px; /* 左右に同じ余白 */
-  font-weight: bold;
-}
+        .row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+            font-size: 16px;
+        }
 
-.value {
-  flex: 1;
-  padding-left: 2px; /* コロンの右側に余白を追加 */
-}
+        .label {
+            width: 140px;
+            font-weight: 600;
+            color: #34495e;
+            text-align: right;
+            padding-right: 8px;
+        }
+
+        .colon {
+            margin: 0 6px;
+            font-weight: bold;
+            color: #34495e;
+        }
+
+        .value {
+            flex: 1;
+            padding-left: 2px;
+            color: #2c3e50;
+        }
+
+        .button-row {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .form-control-button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+
+        .form-submit-button {
+            background-color: #2980b9;
+            color: white;
+        }
+
+        .form-submit-button:hover {
+            background-color: #2471a3;
+            transform: translateY(-1px);
+        }
+
+        .form-cancel-button {
+            background-color: #bdc3c7;
+            color: #2c3e50;
+        }
+
+        .form-cancel-button:hover {
+            background-color: #95a5a6;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 600px) {
+            .row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .label {
+                text-align: left;
+                width: 100%;
+                margin-bottom: 4px;
+            }
+
+            .colon {
+                display: none;
+            }
+
+            .button-row {
+                flex-direction: column;
+            }
+
+            .form-control-button {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
     </style>
 </head>
 <body>
-<h1>投資信託注文確認画面</h1>
-<!--    申込ボタン(submitボタン)が押された場合の動きを定義-->
-<!--    postで/investmentTrustCompletionにアクセスする、入力データはInvestmentTrustForm(Controllerの実装によりinvestmentTrustApplication＝InvestmentTrustForm)に入れる-->
-<!--    したがって申込ボタン(submitボタン)が押された場合にControllerの72行目の実装の部分に行く-->
-<form action="#" id="confirmationForm" th:action="@{/investmentTrustCompletion}" th:object="${investmentTrustApplication}" method="post">
+<div class="content">
+    <h1>投資信託注文確認画面</h1>
+    <form action="#" id="confirmationForm" th:action="@{/investmentTrustCompletion}" th:object="${investmentTrustApplication}" method="post">
 
-    <div class="row">
-<!--        確認画面に表示する内容-->
-        <div class="label">金融機関名</div>
-        <div class="colon">:</div>
-        <div class="value" th:text="*{bankName}"></div>
-<!--        申込ボタンが押された際にInvestmentTrustFormに入れて飛ばすデータを定義-->
-<!--        th:value="*{bankName}"と書くことでInvestmentTrustFormのbankNameにデータを入れる-->
-        <input type="hidden" name="bankName" th:value="*{bankName}"/>
-    </div>
-
-    <div class="row">
-        <div class="label">支店名</div>
-        <div class="colon">:</div>
-        <div class="value" th:text="*{branchName}"></div>
-        <input type="hidden" name="branchName" th:value="*{branchName}"/>
-    </div>
-
-    <div class="row">
-        <div class="label">科目名</div>
-        <div class="colon">:</div>
-        <div class="value" th:text="*{bankAccountType}"></div>
-        <input type="hidden" name="bankAccountType" th:value="*{bankAccountType}"/>
-    </div>
-
-    <div class="row">
-        <div class="label">口座番号</div>
-        <div class="colon">:</div>
-        <div class="value" th:text="*{bankAccountNum}"></div>
-        <input type="hidden" name="bankAccountNum" th:value="*{bankAccountNum}"/>
-    </div>
-
-    <div class="row">
-        <div class="label">購入者氏名</div>
-        <div class="colon">:</div>
-        <div class="value" th:text="*{name}"></div>
-        <input type="hidden" name="name" th:value="*{name}"/>
-    </div>
-
-    <div class="row">
-        <div class="label">銘柄選択</div>
-        <div class="colon">:</div>
-        <div class="value" th:text="*{fundName}"></div>
-        <input type="hidden" name="fundName" th:value="*{fundName}"/>
-    </div>
-
-    <div class="row">
-        <div class="label">購入金額</div>
-        <div class="colon">:</div>
-        <div class="value" th:text="*{money}"></div>
-        <input type="hidden" name="money" th:value="*{money}"/>
-    </div>
-
-    <p>
-    <div class="row">
-    <!--            確認ボタン(submitボタン＝押された場合にform action...の部分で定義されている動きを行う)-->
-        <div class="label">
-            <input type="submit" id="submit" value="申込" style="background-color: #007BFF; color: white;"/>
+        <div class="row">
+            <div class="label">金融機関名</div>
+            <div class="colon">:</div>
+            <div class="value" th:text="*{bankName}"></div>
+            <input type="hidden" name="bankName" th:value="*{bankName}"/>
         </div>
-    <!--            キャンセルボタン(/investmentTrustにアクセス　Controllerの23行目へ飛ぶ)-->
-        <div class="value">
-            <input type="button" value="キャンセル" onclick="window.location='/investmentTrust';"/>
-        </div>
-    </div>
-    </p>
 
-</form>
-<!--resources/static.js/investmentTrustConfirmation.jsをこのHTML内で動かす-->
+        <div class="row">
+            <div class="label">支店名</div>
+            <div class="colon">:</div>
+            <div class="value" th:text="*{branchName}"></div>
+            <input type="hidden" name="branchName" th:value="*{branchName}"/>
+        </div>
+
+        <div class="row">
+            <div class="label">科目名</div>
+            <div class="colon">:</div>
+            <div class="value" th:text="*{bankAccountType}"></div>
+            <input type="hidden" name="bankAccountType" th:value="*{bankAccountType}"/>
+        </div>
+
+        <div class="row">
+            <div class="label">口座番号</div>
+            <div class="colon">:</div>
+            <div class="value" th:text="*{bankAccountNum}"></div>
+            <input type="hidden" name="bankAccountNum" th:value="*{bankAccountNum}"/>
+        </div>
+
+        <div class="row">
+            <div class="label">購入者氏名</div>
+            <div class="colon">:</div>
+            <div class="value" th:text="*{name}"></div>
+            <input type="hidden" name="name" th:value="*{name}"/>
+        </div>
+
+        <div class="row">
+            <div class="label">銘柄選択</div>
+            <div class="colon">:</div>
+            <div class="value" th:text="*{fundName}"></div>
+            <input type="hidden" name="fundName" th:value="*{fundName}"/>
+        </div>
+
+        <div class="row">
+            <div class="label">購入金額</div>
+            <div class="colon">:</div>
+            <div class="value" th:text="*{money}"></div>
+            <input type="hidden" name="money" th:value="*{money}"/>
+        </div>
+
+        <div class="button-row">
+            <input type="submit" value="申込" class="form-control-button form-submit-button"/>
+            <input type="button" value="キャンセル" onclick="window.location='/investmentTrust';" class="form-control-button form-cancel-button"/>
+        </div>
+
+    </form>
+</div>
 <script th:inline="javascript" src="/js/investmentTrustConfirmation.js"></script>
-
 </body>
 </html>

@@ -23,9 +23,9 @@ public class InvestmentTrustController {
     public String bankTransfer(Model model) {
         // 金融機関名のセレクトボックス内の選択肢を生成
         List<String> bankName = new ArrayList<>();
-        bankName.add("A銀行");
-        bankName.add("B銀行");
-        bankName.add("C銀行");
+        bankName.add("東京中央銀行");
+        bankName.add("八王子銀行");
+        bankName.add("キャッスル銀行");
 
         // 科目名のセレクトボックス内の選択肢を生成
         List<String> bankAccountType = new ArrayList<>();
@@ -37,9 +37,18 @@ public class InvestmentTrustController {
 
         // 銘柄選択のセレクトボックス内の選択肢を生成する
         List<String> fundName = new ArrayList<>();
-        fundName.add("銘柄1");
-        fundName.add("銘柄2");
-        fundName.add("銘柄3");
+        fundName.add("米国株式（Ｓ＆Ｐ５００）");
+        fundName.add("全世界株式（オール・カントリー）（オルカン）");
+        fundName.add("ＦＡＮＧ＋インデックス");
+        fundName.add("ＮＡＳＤＡＱ１００");
+        fundName.add("ゴールドファンド");
+        fundName.add("ひふみファンド");
+        fundName.add("雪だるま式インデックスダウ平均");
+        fundName.add("SBC指数組み換えAIファンド");
+        fundName.add("S＆P500　2倍ブル");
+        fundName.add("S＆P　TOP１０ファンド");
+        fundName.add("NASDAQ＋ゴールド（ゴルカン）");
+        fundName.add("TOPIX連動型ファンド");
 
         //investmentTrustMain.htmlのinvestmentTrustApplicationという文字列にInvestmentTrustFormが入る
         model.addAttribute("investmentTrustApplication", new InvestmentTrustForm());
