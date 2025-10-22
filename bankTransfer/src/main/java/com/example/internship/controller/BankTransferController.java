@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 @Controller
@@ -53,7 +54,15 @@ public class BankTransferController {
         //bankTransferConfirmation.htmlのbankNameという文字列に変数bankTransferFormに入っているbankNameのデータが入る(以下同様)
         model.addAttribute("bankName", bankTransferForm.getBankName());
         model.addAttribute("branchName", bankTransferForm.getBranchName());
-        model.addAttribute("bankAccountType", bankTransferForm.getBankAccountType());
+        System.out.println(bankTransferForm.getBankAccountType());
+//        if(Objects.equals(bankTransferForm.getBankAccountType(), "その他")){ model.addAttribute("bankAccountType",bankTransferForm.getBankotherAccountType());}
+//        else  {model.addAttribute("bankAccountType", bankTransferForm.getBankAccountType());}
+        if(bankTransferForm.getBankAccountType().equals("その他")){
+            model.addAttribute("bankAccountType", bankTransferForm.getBankotheracounttype());
+        }
+        else {
+            model.addAttribute("bankAccountType", bankTransferForm.getBankAccountType());
+        }
         model.addAttribute("bankAccountNum", bankTransferForm.getBankAccountNum());
         model.addAttribute("name", bankTransferForm.getName());
         model.addAttribute("money", bankTransferForm.getMoney());

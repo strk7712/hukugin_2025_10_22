@@ -18,6 +18,8 @@ public class BankTransferForm {
     @NonNull
     private String bankAccountType;
     @NonNull
+    private String bankotheracounttype;
+    @NonNull
     private Integer bankAccountNum;
     @NonNull
     private String name;
@@ -48,8 +50,16 @@ public class BankTransferForm {
         return bankAccountType;
     }
 
+    public String getBankotherAccountType() {
+        return bankotheracounttype;
+    }
+
     public void setBankAccountType(String bankAccountType) {
         this.bankAccountType = bankAccountType;
+    }
+
+    public void setBankotherAccountType(String bankotheracounttype) {
+        this.bankAccountType = bankotheracounttype;
     }
 
     public Integer getBankAccountNum() {
